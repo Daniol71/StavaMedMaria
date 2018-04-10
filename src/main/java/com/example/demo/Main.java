@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +15,7 @@ import static com.example.demo.Database.viewTable;
 @SpringBootApplication
 
 public class Main implements CommandLineRunner {
+	@Qualifier("dataSource")
 	@Autowired
 	DataSource dataSource;
 
