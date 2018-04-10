@@ -8,30 +8,25 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Database {
-    @Autowired
-    Connection dbconn;
 
     public static void viewTable(Connection con, String dbName)
             throws SQLException {
     Statement stmt = null;
-    String query = "select COF_NAME, SUP_ID, PRICE, " +
-            "SALES, TOTAL " +
-            "from " + dbName + ".COFFEES";
+    String query = "select *" +
+            "from " + dbName + ".Wordlist1";
     try {
         stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         while (rs.next()) {
-            String coffeeName = rs.getString("COF_NAME");
-            int supplierID = rs.getInt("SUP_ID");
-            float price = rs.getFloat("PRICE");
-            int sales = rs.getInt("SALES");
-            int total = rs.getInt("TOTAL");
-            System.out.println(coffeeName + "\t" + supplierID +
-                    "\t" + price + "\t" + sales +
-                    "\t" + total);
+            int id = rs.getInt("ID");
+            String word = rs.getString("Word");
+            String difficulty = rs.getString("DifficultyLevel");
+
+            System.out.println(id + "\t" + word +
+                    "\t" + difficulty + "\t");
         }
     } catch (SQLException e ) {
-        e.printStackTrace()
+        e.printStackTrace();
     } finally {
         if (stmt != null) { stmt.close(); }
     }
