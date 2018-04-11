@@ -13,17 +13,19 @@ public class Game {
         return true;
     }*/
 
-    /*public boolean stringComparator(String input, String correct){
+    public boolean stringComparator(String input, String correct){
         input = input.trim();
+        input = input.toLowerCase();
 
         int correctLength = correct.length();
         int inputLength = input.length();
 
-        if(inputLength==correctLength){
-
+        if(inputLength==correctLength) {
+            if (input.equals(correct)) {
+                return true;
+            }
         }
-
-
-        return true;
-    }*/
+        return false;
+    }
+    public int 
 }
