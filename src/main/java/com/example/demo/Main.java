@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 @SpringBootApplication
 
-public class Main implements CommandLineRunner {
+/*public class Main implements CommandLineRunner {
 	@Qualifier("dataSource")
 	@Autowired
 	DataSource dataSource;
@@ -24,7 +24,9 @@ public class Main implements CommandLineRunner {
 	public void run(String... strings) throws SQLException {
 		Connection dbconn= dataSource.getConnection();
 		db.getWordSet(dbconn, "dbo.WordList1", "hard");
-	}
+	}*/
+
+public class Main {
 
 	public static void main(String[] args){
 			SpringApplication.run(Main.class, args);

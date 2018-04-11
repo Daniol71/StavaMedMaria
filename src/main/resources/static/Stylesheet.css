@@ -14,9 +14,7 @@ canvas{
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 1200;
-    height: 700;
-    background:url(../static/images/StartPicture.jpg);
+    background:url(/images/StartPicture.jpg);
 }
 
 a{
@@ -65,7 +63,7 @@ a:active {
     margin-top: 15px;
 }
 
-#DiffButton{
+.DiffButton{
     display: block;
     margin-left: auto;
     margin-right: auto;
