@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import static com.example.demo.Database.getWordSet;
 import static com.example.demo.Database.viewTable;
 
 @SpringBootApplication
@@ -24,7 +25,8 @@ public class Main implements CommandLineRunner {
 
 	public void run(String... strings) throws SQLException {
 		Connection dbconn= dataSource.getConnection();
-		viewTable(dbconn, "dbo");}
+		getWordSet(dbconn, "dbo.WordList1", "hard");
+	}
 
 	public static void main(String[] args){
 			SpringApplication.run(Main.class, args);
