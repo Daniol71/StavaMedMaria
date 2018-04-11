@@ -30,11 +30,29 @@ public class Game {
         }
         return false;
     }
-    //Metod som räknar poäng
-    public static int countingPoints(boolean correctSpell, int counter){
+    //Metod som räknar poäng för nivå easy
+    public int countingPointsEasy(boolean correctSpell, int counter){
 
         if (correctSpell==true){
             counter++;
+        }
+        return counter;
+    }
+
+    //Metod som räknar poäng för nivå Medium
+    public int countingPointsMedium(boolean correctSpell, int counter) {
+
+        if (correctSpell==true){
+            counter = counter+2;
+        }
+        return counter;
+    }
+
+    //Metod som räknar poäng för nivå Hard
+    public int countingPointsHard(boolean correctSpell, int counter) {
+
+        if (correctSpell==true){
+            counter = counter+3;
         }
         return counter;
     }
