@@ -2,6 +2,8 @@ package com.example.demo;
 
 public class Game {
 
+
+
     /*public boolean inputValidator(String input) {
         input = input.trim();
         if (input == null || input.isEmpty()) {
@@ -13,6 +15,7 @@ public class Game {
         return true;
     }*/
 
+    //Metod som kollar att stavningen är korrekt
     public boolean stringComparator(String input, String correct){
         input = input.trim();
         input = input.toLowerCase();
@@ -27,5 +30,12 @@ public class Game {
         }
         return false;
     }
-    public int 
+    //Metod som räknar poäng
+    public static int countingPoints(boolean correctSpell, int counter){
+
+        if (correctSpell==true){
+            counter++;
+        }
+        return counter;
+    }
 }
