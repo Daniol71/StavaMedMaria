@@ -2,10 +2,13 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Database {
 
@@ -36,8 +39,10 @@ public class Database {
     }
     //TEST METHOD
 
-    public static void getWordSet(Connection con, String dbTable, String difficulty)
+    public List<String> getWordSet(Connection con, String dbTable, String difficulty)
             throws SQLException {
+        String word = "";
+        List<String> words = new ArrayList<>();
         Statement stmt = null;
         String query = "select *" + "from " + dbTable + " where " + "DifficultyLevel = " + "'" + difficulty + "';";
 
@@ -45,10 +50,10 @@ public class Database {
             stmt = con.createStatement();
             ResultSet wordSet = stmt.executeQuery(query);
             while (wordSet.next()) {
-                String word = wordSet.getString("Word");
-
-                System.out.println(word);
+                word = wordSet.getString("Word");
+                words.add(word);
             }
+            System.out.println(words);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -56,5 +61,6 @@ public class Database {
                 stmt.close();
             }
         }
+        return words;
     }
 }
