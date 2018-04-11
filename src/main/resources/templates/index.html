@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Stava med Maria</title>
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <script src="Javascript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/stylesheet.css">
+    <script src="../static/Javascript.js"></script>
 </head>
 
 <body bgcolor="black">
 
-<h1>Spelling with Maria</h1>
+<img id="Title" src="../static/images/StavaMedMariaLogo.png" class="center">
 
     <canvas id="startcanvas" width="900" height="525" style="border:5px solid black;">
     </canvas>
     <div id="link-container">
-        <a href="http://google.com">Start</a>
+        <a href="../static/Difficulty.html">Start</a>
     </div>
 
     <script type="text/javascript">
@@ -27,7 +27,7 @@
             if ( e.keyCode == konami[state] ) state++;  
             else state = 0;  
             if ( state == 10 )  
-              window.location = "http://www.lingscars.com";  //you can write your own code here
+              window.location = "http://www.lingscars.com"; 
             }, true);  
         }  
         </script>
