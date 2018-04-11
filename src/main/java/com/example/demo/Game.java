@@ -30,6 +30,7 @@ public class Game {
         }
         return false;
     }
+
     //Metod som räknar poäng för nivå easy
     public int countingPointsEasy(boolean correctSpell, int counter){
 
@@ -38,6 +39,7 @@ public class Game {
         }
         return counter;
     }
+
 
     //Metod som räknar poäng för nivå Medium
     public int countingPointsMedium(boolean correctSpell, int counter) {
@@ -56,4 +58,5 @@ public class Game {
         }
         return counter;
     }
+
 }

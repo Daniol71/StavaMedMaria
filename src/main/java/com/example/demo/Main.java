@@ -10,21 +10,23 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import static com.example.demo.Database.viewTable;
-
 @SpringBootApplication
 
-public class Main implements CommandLineRunner {
+/*public class Main implements CommandLineRunner {
 	@Qualifier("dataSource")
 	@Autowired
 	DataSource dataSource;
 
 	public Main() throws SQLException {
 	}
+	Database db = new Database();
 
 	public void run(String... strings) throws SQLException {
 		Connection dbconn= dataSource.getConnection();
-		viewTable(dbconn, "dbo");}
+		db.getWordSet(dbconn, "dbo.WordList1", "hard");
+	}*/
+
+public class Main {
 
 	public static void main(String[] args){
 			SpringApplication.run(Main.class, args);
