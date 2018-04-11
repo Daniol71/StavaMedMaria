@@ -1,0 +1,89 @@
+
+@BackgroundColor: lightsteelblue;
+@OtherBackgroundColor: lightblue;
+html {
+  margin: 0;
+  height: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+}
+#clear {
+  margin: 5px;
+}
+#field {
+  margin: 5px;
+}
+.done {
+  color: #bd1717;
+  text-decoration: line-through;
+}
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+  height: 100%;
+}
+.header {
+  display: flex;
+  order: 1;
+  flex: 1 100%;
+  align-content: center;
+  justify-content: center;
+  color: black;
+  background-color: @BackgroundColor;
+  font-size: xx-large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  height: 20%;
+}
+.main {
+  display: flex;
+  order: 3;
+  flex: 2;
+  align-items: center;
+  justify-content: center;
+  background-color: @OtherBackgroundColor;
+  height: 70%;
+  
+}
+.leftSide {
+  display: flex;
+  order: 2;
+  flex: 1;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: @OtherBackgroundColor;
+  height: 70%;
+  border-right: 3px solid @BackgroundColor;
+}
+.rightSide {
+  display: flex;
+  order: 4;
+  flex: 1;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: left;
+  background-color: @OtherBackgroundColor;
+  height: 70%;
+  border-left: 3px solid @BackgroundColor;
+}
+.footer {
+  display: flex;
+  order: 5;
+  flex: 1 100%;
+  background-color: @BackgroundColor;
+  height: 10%;
+  justify-content: flex-end;
+}
+canvas {
+  border: 1px solid black;
+  background-color: lightgrey;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

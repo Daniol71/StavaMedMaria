@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/MainGamePageStyles.css" th:href="/MainGamePageStyles.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <div class="flex-container">
+        <header class="header"><p class="center"></p></header>
+
+        <div class="main">
+                <canvas width="350" height="300" id="canvas"/>
+        </div>
+        <div class=leftSide>
+            <form id="formID">
+                <input id="field">
+                <input type="submit" value="Add">
+            </form>
+            <button id="clear">Clear all done</button>
+            <input type="file" id="input">
+        </div>
+        <div class="rightSide">
+        </div>
+        <footer class="footer"></footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../static/MainGamePageJS.js"></script>
+    </div>
+</body>
+
+</html>
