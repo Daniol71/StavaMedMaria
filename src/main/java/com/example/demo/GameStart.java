@@ -2,9 +2,8 @@ package com.example.demo;
 
 public class GameStart {
 
-    int pointCounter = 0;
-
-
+    public int pointCounter = 0;
+    public int attemptCount = 2;
 
 
 }
