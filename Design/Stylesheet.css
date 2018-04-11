@@ -1,10 +1,11 @@
-h1{
-    font-size: 80px;
-    font-family: "Huesitos";
-    color: rgb(152,0,2);
-    text-align: center;
+#Title {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 90%;
 }
-
 
 canvas{
     background-color: black;
@@ -15,7 +16,7 @@ canvas{
     display: block;
     width: 1200;
     height: 700;
-    background:url(start.jpg);
+    background:url(StartPicture.jpg);
 }
 
 a{
@@ -54,4 +55,22 @@ a:active {
     background-color: transparent;
     text-decoration: none;
     transform: rotate(10deg);
+}
+
+#DifficultyText{
+    color: rgb(125, 0, 2);
+    font-family: "Huesitos";
+    text-align: center;
+    font-size: 120px;
+    margin-top: 15px;
+}
+
+#DiffButton{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 40%;
+    height:40%;
 }
