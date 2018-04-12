@@ -23,12 +23,14 @@ import java.sql.SQLException;
 
 	public void run(String... strings) throws SQLException {
 		Connection dbconn= dataSource.getConnection();
-		db.getWordSet(dbconn, "dbo.WordList1", "hard");
+		db.getWordSet(dbconn, "dbo.WordList", "hard");
 	}*/
 
 public class Main {
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws SQLException {
+
+
 			SpringApplication.run(Main.class, args);
 	}
 }
