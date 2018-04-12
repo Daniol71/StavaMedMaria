@@ -6,6 +6,9 @@
     margin-bottom: 25px;
     width: 90%;
 }
+audio {
+    display:none;
+}
 
 canvas{
     background-color: black;
