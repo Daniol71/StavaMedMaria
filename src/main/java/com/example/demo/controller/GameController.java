@@ -25,19 +25,17 @@ public class GameController {
     @Autowired
     Database database;
 
+    String dbTable = "dbo.EasyWordList";
+    int counter = 1;
 
     @GetMapping("/Difficulty.html")
-    public ModelAndView showDifficulty(){
+    public ModelAndView showDifficulty() {
         return new ModelAndView("Difficulty.html");
     }
 
     @GetMapping("/MainGamePageEasy.html")
     public ModelAndView setEasy() throws SQLException {
-        String dbTable = "dbo.EasyWordList";
-        int counter = 0;
-        counter++;
 
-        String correct = database.getWord(dbTable, counter);
 
         String imagePath = database.getImg(dbTable, counter);
 
@@ -46,11 +44,21 @@ public class GameController {
     }
 
     @GetMapping("/MainGamePage.html")
-    public ModelAndView showMainGamePage(){
+    public ModelAndView showMainGamePage() {
         return new ModelAndView("MainGamePage.html");
     }
+
+
     @PostMapping("/WordInput")
-    public ModelAndView inputWord(@RequestParam String input, String correct ){ game.stringComparator(input, correct);
-        return new ModelAndView("WordInput");
+    public ModelAndView inputWord(@RequestParam String input) throws SQLException {
+        String correct = database.getWord(dbTable, counter);
+
+        boolean test = game.stringComparator(input, correct);
+        if (test) {
+            counter++;
+            return new ModelAndView("redirect:/MainGamePageEasy.html");
+        } else {
+            return new ModelAndView("redirect:/MainGamePageEasy.html");
+        }
     }
 }
