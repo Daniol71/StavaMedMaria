@@ -24,6 +24,7 @@ public class Game {
 
     //Metod som kollar att stavningen är korrekt
     public boolean stringComparator(String input, String correct){
+        correct = correct.trim();
         input = input.trim();
         input = input.toLowerCase();
 
