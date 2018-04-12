@@ -49,6 +49,52 @@ public class Database {
     }
     //TEST METHOD
 
+    public String getWord(String dbTable,int index)
+            throws SQLException {
+        Connection con = dataSource.getConnection();
+        String word = "";
+        Statement stmt = null;
+        String query = "select Word " + "from " + dbTable + " where " + "ID= " + "'" + index + "';";
+
+        try {
+            stmt = con.createStatement();
+            ResultSet result = stmt.executeQuery(query);
+            if (result.next()) {
+                word = result.getString("Word");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+        return word;
+    }
+
+    public String getImg(String dbTable,int index)
+            throws SQLException {
+        Connection con = dataSource.getConnection();
+        String img = "";
+        Statement stmt = null;
+        String query = "select Image " + "from " + dbTable + " where " + "ID= " + "'" + index + "';";
+
+        try {
+            stmt = con.createStatement();
+            ResultSet result = stmt.executeQuery(query);
+            if (result.next()) {
+                img = result.getString("Image");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+        return img;
+    }
+
     public List<String> getWordSet(Connection con, String dbTable, String difficulty)
             throws SQLException {
         String word = "";

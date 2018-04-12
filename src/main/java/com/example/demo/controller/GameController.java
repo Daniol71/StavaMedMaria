@@ -22,16 +22,27 @@ public class GameController {
     Game game;
     @Autowired
     Run run;
+    @Autowired
+    Database database;
 
 
     @GetMapping("/Difficulty.html")
     public ModelAndView showDifficulty(){
-      /*  try {
-            run.test();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
         return new ModelAndView("Difficulty.html");
+    }
+
+    @GetMapping("/MainGamePageEasy.html")
+    public ModelAndView setEasy() throws SQLException {
+        String dbTable = "dbo.EasyWordList";
+        int counter = 0;
+        counter++;
+
+        String correct = database.getWord(dbTable, counter);
+
+        String imagePath = database.getImg(dbTable, counter);
+
+        return new ModelAndView("MainGamePageEasy.html").addObject("img",
+                imagePath);
     }
 
     @GetMapping("/MainGamePage.html")

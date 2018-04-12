@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/MainGamePageStyles.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body bgcolor="Black">
+<div class="flex-container">
+    <header class="header"><p class="center"></p></header>
+
+    <div class="main">
+        <img th:src="${img}" class="image">
+        <!--<canvas width="350" height="300" id="canvas"/>-->
+    </div>
+    <div class=leftSide>
+
+    </div>
+    <div class="rightSide">
+    </div>
+    <footer class="footer">
+        <form id="formID" action="WordInput" method="post">
+            <input id="field" name="input">
+            <input type="submit" value="Add">
+        </form>
+    </footer>
+</div>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="/MainGamePageJS.js"></script>-->
+</div>
+</body>
+
+</html>
