@@ -2,6 +2,8 @@ package com.example.demo;
 
 public class Player {
 
+    private int counter;
+
     public int getCounter() {
         return counter;
     }
@@ -10,5 +12,7 @@ public class Player {
         this.counter = counter;
     }
 
-    public int counter;
+    public void incrementCounter(){
+        counter++;
+    }
 }

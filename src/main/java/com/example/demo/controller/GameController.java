@@ -25,26 +25,28 @@ public class GameController {
 
     Player player = new Player();
 
-    @GetMapping("/index.html")
+    @GetMapping("/")
     public ModelAndView showStart() {
         player.setCounter(1);
+        System.out.println(player.getCounter() + "index");
         return new ModelAndView("index.html");
     }
 
     @GetMapping("/Difficulty.html")
     public ModelAndView showDifficulty() {
-        player.setCounter(1);
         return new ModelAndView("Difficulty.html");
     }
 
     //EASY
-    @GetMapping("/MainGamePageEasy")
+    @GetMapping("/MainGamePageEasy.html")
     public ModelAndView startEasy() throws SQLException {
         String dbTable = "dbo.EasyWordList";
 
         int counter = player.getCounter();
+        System.out.println(counter + "starteasy");
 
         String imagePath = database.getImg(dbTable, counter);
+        System.out.println(imagePath + "img");
         return new ModelAndView("MainGamePageEasy.html").addObject("img",
                 imagePath);
     }
@@ -52,7 +54,8 @@ public class GameController {
     @PostMapping("/WordInputEasy")
     public ModelAndView inputWordEasy(@RequestParam String input) throws SQLException {
         String dbTable = "dbo.EasyWordList";
-        String correct = database.getWord(dbTable, player.getCounter());
+        int counter = player.getCounter();
+        String correct = database.getWord(dbTable, counter);
         System.out.println(correct);
 
         boolean test = game.stringComparator(input, correct);
@@ -60,8 +63,8 @@ public class GameController {
             return new ModelAndView("redirect:/Win.html");
         }
         else if (test) {
-            player.setCounter(player.getCounter()+1);
-            int counter = player.getCounter();
+            player.incrementCounter();
+            counter = player.getCounter();
             String imagePath = database.getImg(dbTable, counter);
             return new ModelAndView("/MainGamePageEasy.html").addObject("img", imagePath);
         }
@@ -72,7 +75,7 @@ public class GameController {
     //EASY
 
     //MEDIUM
-    @GetMapping("/MainGamePageMedium")
+    @GetMapping("/MainGamePageMedium.html")
     public ModelAndView startMedium() throws SQLException {
         String dbTable = "dbo.MediumWordList";
 
@@ -106,7 +109,7 @@ public class GameController {
     //MEDIUM
 
     //HARD
-    @GetMapping("/MainGamePageHard")
+    @GetMapping("/MainGamePageHard.html")
     public ModelAndView startHard() throws SQLException {
         String dbTable = "dbo.HardWordList";
 
