@@ -22,7 +22,6 @@ public class GameController {
     @GetMapping("/")
     public ModelAndView showStart() {
         player.setCounter(1);
-        System.out.println(player.getCounter() + "index");
         return new ModelAndView("index.html");
     }
 
@@ -34,23 +33,20 @@ public class GameController {
     //EASY
     @GetMapping("/MainGamePageEasy.html")
     public ModelAndView startEasy() throws SQLException {
+
         String dbTable = "dbo.EasyWordList";
-
         int counter = player.getCounter();
-        System.out.println(counter + "starteasy");
-
         String imagePath = database.getImg(dbTable, counter);
-        System.out.println(imagePath + "img");
+
         return new ModelAndView("MainGamePageEasy.html").addObject("img",
                 imagePath);
     }
 
     @PostMapping("/WordInputEasy")
     public ModelAndView inputWordEasy(@RequestParam String input) throws SQLException {
+
         String dbTable = "dbo.EasyWordList";
-        int counter = player.getCounter();
-        String correct = database.getWord(dbTable, counter);
-        System.out.println(correct);
+        String correct = database.getWord(dbTable, player.getCounter());
 
         boolean test = game.stringComparator(input, correct);
         if (player.getCounter()==5 && test){
@@ -58,7 +54,7 @@ public class GameController {
         }
         else if (test) {
             player.incrementCounter();
-            counter = player.getCounter();
+            int counter = player.getCounter();
             String imagePath = database.getImg(dbTable, counter);
             return new ModelAndView("/MainGamePageEasy.html").addObject("img", imagePath);
         }
@@ -71,27 +67,27 @@ public class GameController {
     //MEDIUM
     @GetMapping("/MainGamePageMedium.html")
     public ModelAndView startMedium() throws SQLException {
+
         String dbTable = "dbo.MediumWordList";
-
         int counter = player.getCounter();
-
         String imagePath = database.getImg(dbTable, counter);
+
         return new ModelAndView("MainGamePageMedium.html").addObject("img",
                 imagePath);
     }
 
     @PostMapping("/WordInputMedium")
     public ModelAndView inputWordMedium(@RequestParam String input) throws SQLException {
+
         String dbTable = "dbo.MediumWordList";
         String correct = database.getWord(dbTable, player.getCounter());
-        System.out.println(correct);
 
         boolean test = game.stringComparator(input, correct);
         if (player.getCounter()==5 && test){
             return new ModelAndView("/Win.html");
         }
         else if (test) {
-            player.setCounter(player.getCounter()+1);
+            player.incrementCounter();
             int counter = player.getCounter();
             String imagePath = database.getImg(dbTable, counter);
             return new ModelAndView("/MainGamePageMedium.html").addObject("img", imagePath);
@@ -105,27 +101,27 @@ public class GameController {
     //HARD
     @GetMapping("/MainGamePageHard.html")
     public ModelAndView startHard() throws SQLException {
+
         String dbTable = "dbo.HardWordList";
-
         int counter = player.getCounter();
-
         String imagePath = database.getImg(dbTable, counter);
+
         return new ModelAndView("/MainGamePageHard.html").addObject("img",
                 imagePath);
     }
 
     @PostMapping("/WordInputHard")
     public ModelAndView inputWordHard(@RequestParam String input) throws SQLException {
+
         String dbTable = "dbo.HardWordList";
         String correct = database.getWord(dbTable, player.getCounter());
-        System.out.println(correct);
 
         boolean test = game.stringComparator(input, correct);
         if (player.getCounter()==5 && test){
             return new ModelAndView("/Win.html");
         }
         else if (test) {
-            player.setCounter(player.getCounter()+1);
+            player.incrementCounter();
             int counter = player.getCounter();
             String imagePath = database.getImg(dbTable, counter);
             return new ModelAndView("/MainGamePageHard.html").addObject("img", imagePath);
@@ -136,10 +132,11 @@ public class GameController {
     }
     //HARD
 
-     @GetMapping("/Fail.html")
-     public ModelAndView showGameOver() {
+    @GetMapping("/Fail.html")
+    public ModelAndView showGameOver() {
          return new ModelAndView("Fail.html");
      }
+
     @GetMapping("/Win.html")
     public ModelAndView showWin() {
         return new ModelAndView("Win.html");

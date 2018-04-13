@@ -8,7 +8,6 @@ public class Game {
     @Autowired
     Database database;
 
-
     //Metod som kollar att stavningen är korrekt
     public boolean stringComparator(String input, String correct){
         correct = correct.trim();
