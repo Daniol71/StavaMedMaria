@@ -25,8 +25,15 @@ public class GameController {
 
     Player player = new Player();
 
+    @GetMapping("/index.html")
+    public ModelAndView showStart() {
+        player.setCounter(1);
+        return new ModelAndView("index.html");
+    }
+
     @GetMapping("/Difficulty.html")
     public ModelAndView showDifficulty() {
+        player.setCounter(1);
         return new ModelAndView("Difficulty.html");
     }
 
@@ -34,8 +41,6 @@ public class GameController {
     @GetMapping("/MainGamePageEasy")
     public ModelAndView startEasy() throws SQLException {
         String dbTable = "dbo.EasyWordList";
-
-        player.setCounter(1);
 
         int counter = player.getCounter();
 
@@ -51,7 +56,7 @@ public class GameController {
         System.out.println(correct);
 
         boolean test = game.stringComparator(input, correct);
-        if (player.getCounter()==5){
+        if (player.getCounter()==5 && test){
             return new ModelAndView("redirect:/Win.html");
         }
         else if (test) {
@@ -71,8 +76,6 @@ public class GameController {
     public ModelAndView startMedium() throws SQLException {
         String dbTable = "dbo.MediumWordList";
 
-        player.setCounter(1);
-
         int counter = player.getCounter();
 
         String imagePath = database.getImg(dbTable, counter);
@@ -87,7 +90,7 @@ public class GameController {
         System.out.println(correct);
 
         boolean test = game.stringComparator(input, correct);
-        if (player.getCounter()==5){
+        if (player.getCounter()==5 && test){
             return new ModelAndView("redirect:/Win.html");
         }
         else if (test) {
@@ -107,8 +110,6 @@ public class GameController {
     public ModelAndView startHard() throws SQLException {
         String dbTable = "dbo.HardWordList";
 
-        player.setCounter(1);
-
         int counter = player.getCounter();
 
         String imagePath = database.getImg(dbTable, counter);
@@ -123,7 +124,7 @@ public class GameController {
         System.out.println(correct);
 
         boolean test = game.stringComparator(input, correct);
-        if (player.getCounter()==5){
+        if (player.getCounter()==5 && test){
             return new ModelAndView("redirect:/Win.html");
         }
         else if (test) {
