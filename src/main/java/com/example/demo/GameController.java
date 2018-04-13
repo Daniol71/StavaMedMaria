@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo;
 
 import com.example.demo.Database;
 import com.example.demo.Game;
@@ -60,7 +60,7 @@ public class GameController {
 
         boolean test = game.stringComparator(input, correct);
         if (player.getCounter()==5 && test){
-            return new ModelAndView("redirect:/Win.html");
+            return new ModelAndView("/Win.html");
         }
         else if (test) {
             player.incrementCounter();
@@ -69,7 +69,7 @@ public class GameController {
             return new ModelAndView("/MainGamePageEasy.html").addObject("img", imagePath);
         }
         else {
-            return new ModelAndView("redirect:/Fail.html");
+            return new ModelAndView("/Fail.html");
         }
     }
     //EASY
@@ -94,7 +94,7 @@ public class GameController {
 
         boolean test = game.stringComparator(input, correct);
         if (player.getCounter()==5 && test){
-            return new ModelAndView("redirect:/Win.html");
+            return new ModelAndView("/Win.html");
         }
         else if (test) {
             player.setCounter(player.getCounter()+1);
@@ -103,7 +103,7 @@ public class GameController {
             return new ModelAndView("/MainGamePageMedium.html").addObject("img", imagePath);
         }
         else {
-            return new ModelAndView("redirect:/Fail.html");
+            return new ModelAndView("/Fail.html");
         }
     }
     //MEDIUM
@@ -116,7 +116,7 @@ public class GameController {
         int counter = player.getCounter();
 
         String imagePath = database.getImg(dbTable, counter);
-        return new ModelAndView("MainGamePageHard.html").addObject("img",
+        return new ModelAndView("/MainGamePageHard.html").addObject("img",
                 imagePath);
     }
 
@@ -128,7 +128,7 @@ public class GameController {
 
         boolean test = game.stringComparator(input, correct);
         if (player.getCounter()==5 && test){
-            return new ModelAndView("redirect:/Win.html");
+            return new ModelAndView("/Win.html");
         }
         else if (test) {
             player.setCounter(player.getCounter()+1);
@@ -137,7 +137,7 @@ public class GameController {
             return new ModelAndView("/MainGamePageHard.html").addObject("img", imagePath);
         }
         else {
-            return new ModelAndView("redirect:/Fail.html");
+            return new ModelAndView("/Fail.html");
         }
     }
     //HARD
