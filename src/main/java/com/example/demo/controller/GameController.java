@@ -51,8 +51,8 @@ public class GameController {
         System.out.println(correct);
 
         boolean test = game.stringComparator(input, correct);
-        if (player.getCounter()==5 && test){
-            return new ModelAndView("redirect:/Success.html");
+        if (player.getCounter()==5){
+            return new ModelAndView("redirect:/Win.html");
         }
         else if (test) {
             player.setCounter(player.getCounter()+1);
@@ -87,8 +87,8 @@ public class GameController {
         System.out.println(correct);
 
         boolean test = game.stringComparator(input, correct);
-        if (player.getCounter()==5 && test){
-            return new ModelAndView("redirect:/Success.html");
+        if (player.getCounter()==5){
+            return new ModelAndView("redirect:/Win.html");
         }
         else if (test) {
             player.setCounter(player.getCounter()+1);
@@ -123,8 +123,8 @@ public class GameController {
         System.out.println(correct);
 
         boolean test = game.stringComparator(input, correct);
-        if (player.getCounter()==5 && test){
-            return new ModelAndView("redirect:/Success.html");
+        if (player.getCounter()==5){
+            return new ModelAndView("redirect:/Win.html");
         }
         else if (test) {
             player.setCounter(player.getCounter()+1);
@@ -142,8 +142,8 @@ public class GameController {
      public ModelAndView showGameOver() {
          return new ModelAndView("Fail.html");
      }
-    @GetMapping("/Success.html")
+    @GetMapping("/Win.html")
     public ModelAndView showWin() {
-        return new ModelAndView("Success.html");
+        return new ModelAndView("Win.html");
     }
 }
