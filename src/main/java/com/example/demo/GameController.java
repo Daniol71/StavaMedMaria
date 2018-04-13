@@ -1,9 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.Database;
-import com.example.demo.Game;
-import com.example.demo.Player;
-import com.example.demo.Run;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +14,6 @@ public class GameController {
 
     @Autowired
     Game game;
-    @Autowired
-    Run run;
     @Autowired
     Database database;
 
