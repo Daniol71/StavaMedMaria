@@ -9,19 +9,6 @@ public class Game {
     Database database;
 
 
-
-
-    /*public boolean inputValidator(String input) {
-        input = input.trim();
-        if (input == null || input.isEmpty()) {
-            return false;
-        }
-        if (input.matches("0123456789")){
-
-        }
-        return true;
-    }*/
-
     //Metod som kollar att stavningen är korrekt
     public boolean stringComparator(String input, String correct){
         correct = correct.trim();
