@@ -2,19 +2,15 @@ package com.example.demo.controller;
 
 import com.example.demo.Database;
 import com.example.demo.Game;
-import com.example.demo.GameStart;
+import com.example.demo.Player;
 import com.example.demo.Run;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
-import javax.sql.DataSource;
 import java.sql.SQLException;
 
 @Controller
@@ -27,7 +23,7 @@ public class GameController {
     @Autowired
     Database database;
 
-    GameStart player = new GameStart();
+    Player player = new Player();
 
     @GetMapping("/Difficulty.html")
     public ModelAndView showDifficulty() {
@@ -35,7 +31,7 @@ public class GameController {
     }
 
     //EASY
-    @GetMapping("/MainGamePageEasy.html")
+    @GetMapping("/MainGamePageEasy")
     public ModelAndView startEasy() throws SQLException {
         String dbTable = "dbo.EasyWordList";
 
@@ -48,19 +44,17 @@ public class GameController {
                 imagePath);
     }
 
-    /*@GetMapping("/lolnewpage")
-    public ModelAndView playEasy() {
-        return new ModelAndView("MainGamePageEasy.html");
-    }*/
-
     @PostMapping("/WordInputEasy")
-    public ModelAndView inputWord(@RequestParam String input) throws SQLException {
+    public ModelAndView inputWordEasy(@RequestParam String input) throws SQLException {
         String dbTable = "dbo.EasyWordList";
         String correct = database.getWord(dbTable, player.getCounter());
         System.out.println(correct);
 
         boolean test = game.stringComparator(input, correct);
-        if (test) {
+        if (player.getCounter()==5 && test){
+            return new ModelAndView("redirect:/Success.html");
+        }
+        else if (test) {
             player.setCounter(player.getCounter()+1);
             int counter = player.getCounter();
             String imagePath = database.getImg(dbTable, counter);
@@ -72,16 +66,84 @@ public class GameController {
     }
     //EASY
 
+    //MEDIUM
+    @GetMapping("/MainGamePageMedium")
+    public ModelAndView startMedium() throws SQLException {
+        String dbTable = "dbo.MediumWordList";
+
+        player.setCounter(1);
+
+        int counter = player.getCounter();
+
+        String imagePath = database.getImg(dbTable, counter);
+        return new ModelAndView("MainGamePageMedium.html").addObject("img",
+                imagePath);
+    }
+
+    @PostMapping("/WordInputMedium")
+    public ModelAndView inputWordMedium(@RequestParam String input) throws SQLException {
+        String dbTable = "dbo.MediumWordList";
+        String correct = database.getWord(dbTable, player.getCounter());
+        System.out.println(correct);
+
+        boolean test = game.stringComparator(input, correct);
+        if (player.getCounter()==5 && test){
+            return new ModelAndView("redirect:/Success.html");
+        }
+        else if (test) {
+            player.setCounter(player.getCounter()+1);
+            int counter = player.getCounter();
+            String imagePath = database.getImg(dbTable, counter);
+            return new ModelAndView("/MainGamePageMedium.html").addObject("img", imagePath);
+        }
+        else {
+            return new ModelAndView("redirect:/Fail.html");
+        }
+    }
+    //MEDIUM
+
+    //HARD
+    @GetMapping("/MainGamePageHard")
+    public ModelAndView startHard() throws SQLException {
+        String dbTable = "dbo.HardWordList";
+
+        player.setCounter(1);
+
+        int counter = player.getCounter();
+
+        String imagePath = database.getImg(dbTable, counter);
+        return new ModelAndView("MainGamePageHard.html").addObject("img",
+                imagePath);
+    }
+
+    @PostMapping("/WordInputHard")
+    public ModelAndView inputWordHard(@RequestParam String input) throws SQLException {
+        String dbTable = "dbo.HardWordList";
+        String correct = database.getWord(dbTable, player.getCounter());
+        System.out.println(correct);
+
+        boolean test = game.stringComparator(input, correct);
+        if (player.getCounter()==5 && test){
+            return new ModelAndView("redirect:/Success.html");
+        }
+        else if (test) {
+            player.setCounter(player.getCounter()+1);
+            int counter = player.getCounter();
+            String imagePath = database.getImg(dbTable, counter);
+            return new ModelAndView("/MainGamePageHard.html").addObject("img", imagePath);
+        }
+        else {
+            return new ModelAndView("redirect:/Fail.html");
+        }
+    }
+    //HARD
+
      @GetMapping("/Fail.html")
      public ModelAndView showGameOver() {
          return new ModelAndView("Fail.html");
      }
-
-    @GetMapping("/MainGamePage.html")
-    public ModelAndView showMainGamePage() {
-        return new ModelAndView("MainGamePage.html");
+    @GetMapping("/Success.html")
+    public ModelAndView showWin() {
+        return new ModelAndView("Success.html");
     }
-
-
-
 }
