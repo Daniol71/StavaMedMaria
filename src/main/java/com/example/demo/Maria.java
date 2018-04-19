@@ -1,5 +1,7 @@
 package com.example.demo;
 
 public class Maria {
-    String face = ":)";
+    String happyFace = ":)";
+    String sadFace = ":(";
+    Boolean hasHead = null;
 }
