@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 @Component
 public class Database {
@@ -18,12 +15,14 @@ public class Database {
 
     public String getWord(String dbTable,int index)
             throws SQLException {
-        Connection con = dataSource.getConnection();
         String word = "";
         Statement stmt = null;
+
+        //Add prepared statement
+
         String query = "select Word " + "from " + dbTable + " where " + "ID= " + "'" + index + "';";
 
-        try {
+        try(Connection con = dataSource.getConnection()) {
             stmt = con.createStatement();
             ResultSet result = stmt.executeQuery(query);
             if (result.next()) {
@@ -41,12 +40,10 @@ public class Database {
 
     public String getImg(String dbTable,int index)
             throws SQLException {
-        Connection con = dataSource.getConnection();
         String img = "";
         Statement stmt = null;
         String query = "select Image " + "from " + dbTable + " where " + "ID= " + "'" + index + "';";
-
-        try {
+        try(Connection con = dataSource.getConnection()) {
             stmt = con.createStatement();
             ResultSet result = stmt.executeQuery(query);
             if (result.next()) {

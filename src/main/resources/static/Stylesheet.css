@@ -20,6 +20,20 @@ canvas{
     background:url(/images/StartPicture.jpg);
 }
 
+#version{
+    text-align: center;
+    font-family: "Huesitos";
+    font-size: 110px;
+    color: rgb(125, 0, 2);
+}
+
+#marketing{
+    text-align: center;
+    font-family: "Huesitos";
+    font-size: 25px;
+    color: rgb(217, 250, 7);
+}
+
 a{
     font-size: 100px;
     font-family: "Huesitos";
